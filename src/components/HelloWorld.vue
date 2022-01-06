@@ -31,10 +31,21 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      
+    }
+  },
+  mounted(){
+    axios.get('http://phplaravel-692081-2338552.cloudwaysapps.com/api/sliders', {dataType: "jsonp"}).then((res) => {
+      console.log(res);
+    });
   }
 }
 </script>
