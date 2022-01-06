@@ -43,7 +43,7 @@ export default {
     }
   },
   mounted(){
-    axios.get('http://phplaravel-692081-2338552.cloudwaysapps.com/api/sliders', {dataType: "jsonp"}).then((res) => {
+    axios.get('http://phplaravel-692081-2338552.cloudwaysapps.com/api/sliders').then((res) => {
       console.log(res);
     });
   }
