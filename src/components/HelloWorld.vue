@@ -20,32 +20,40 @@
       <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
     </ul>
     <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+      <button @click="addtocart">addtor cart</button>
+      <button @click="getcart">get cart</button>
+
   </div>
+
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
-  data() {
+  data(){
     return {
-      
+     cart: {
+      "product_id":96,
+      "qty": 1
+      }
     }
   },
-  mounted(){
-    axios.get('//phplaravel-692081-2338552.cloudwaysapps.com/api/sliders').then((res) => {
-      console.log(res);
-    });
+  methods: {
+    addtocart(){
+      axios.post('https://galaxytelecom.fr/api/cart/items', this.cart, { withCredentials: true }).then(res => {
+        console.log(res);
+      })
+    },
+    getcart(){
+    axios.get('https://galaxytelecom.fr/api/cart', { withCredentials: true }).then(res => {
+        console.log(res);
+      })
+    }
   }
 }
 </script>
